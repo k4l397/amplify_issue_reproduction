@@ -13,12 +13,10 @@ resource "aws_amplify_app" "test_app" {
   enable_branch_auto_deletion = true
   enable_branch_auto_build    = true
 
-  dynamic "auto_branch_creation_config" {
-    content {
-      enable_pull_request_preview = true
-      enable_auto_build           = false
-      stage                       = "PULL_REQUEST"
-    }
+  auto_branch_creation_config {
+    enable_pull_request_preview = true
+    enable_auto_build           = false
+    stage                       = "PULL_REQUEST"
   }
 
 
@@ -35,12 +33,11 @@ resource "aws_amplify_app" "test_app" {
   }
 }
 
-resource "aws_amplify_branch" "master_app" {
-  app_id            = aws_amplify_app.shareholder.id
-  branch_name       = "master"
+resource "aws_amplify_branch" "main_app" {
+  app_id            = aws_amplify_app.test_app.id
+  branch_name       = "main"
   enable_auto_build = true
 
-  framework = local.framework
   stage     = "PRODUCTION"
 }
 

@@ -2,7 +2,7 @@
 
 resource "aws_amplify_app" "test_app" {
   name       = "test_app"
-  repository = "https://github.com/"
+  repository = var.repo_url
 
   build_spec = file("${path.module}/build.yaml")
 

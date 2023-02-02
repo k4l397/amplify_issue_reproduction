@@ -4,12 +4,6 @@ variable "access_token_for_repo" {
   description = "Gitlab access token for the dashboard repo."
 }
 
-variable "prefix" {
+variable "repo_url" {
   type = string
 }
-
-variable "enable_build_preview" {
-  type    = bool
-  default = false
-}
-

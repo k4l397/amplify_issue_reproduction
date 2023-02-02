@@ -1,0 +1,13 @@
+version: 1
+applications:
+  - appRoot: app
+    frontend:
+      phases:
+        build:
+          commands:
+            - mkdir build
+            - cp index.html build
+      artifacts:
+        baseDirectory: ./build # Relative to pwd of `build` step.
+        files:
+          - "**/*"
